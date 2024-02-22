@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents();
 
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<ArtworksService>();
+builder.Services.AddScoped<IArtworksService, ArtworksService>();
 
 var app = builder.Build();
 

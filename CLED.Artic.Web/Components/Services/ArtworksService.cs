@@ -2,7 +2,7 @@
 using CLED.Artic.Web.Models;
 using static CLED.Artic.Web.Models.GetArtworksResponse;
 
-public class ArtworksService
+public class ArtworksService : IArtworksService
 {
 
     private readonly HttpClient _httpClient;
@@ -19,7 +19,7 @@ public class ArtworksService
             return [];
 
         return response.Data;
-     
+
     }
 
 
