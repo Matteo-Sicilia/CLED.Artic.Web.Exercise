@@ -1,0 +1,28 @@
+﻿@page "/"
+@using static CLED.Artic.Web.Models.GetArtworksResponse
+@using CLED.Artic.Web.Components.Services
+@inject HttpClient client
+
+<PageTitle>Home</PageTitle>
+
+<h1>Artworks</h1>
+
+@foreach (var item in _list)
+{
+    <div>
+        <h2>@item.title</h2>
+        @((MarkupString)item.description)
+        <img src="https://www.artic.edu/iiif/2/{image_id}/full/843,/0/default.jpg" />
+
+    </div>
+}
+
+@code{
+    private IEnumerable<Artwork> _list  = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        var service = new ArtworksService(client);
+        _list = await service.GetArtworks();
+    }
+}
